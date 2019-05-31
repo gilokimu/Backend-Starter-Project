@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/aantoniadis/clean-architecture-example.svg?branch=master)](https://travis-ci.org/aantoniadis/clean-architecture-example)
+[![Build Status](https://travis-ci.org/gilokimu/android-backend-starter.svg?branch=master)](https://travis-ci.org/gilokimu/android-backend-starter)
 
 # Compile and run the app
 
@@ -27,9 +27,9 @@ defines the interface of the gateway that is required following the
 gateways, operate on the domain entities defined in `core`.
 
 In this module,
-[`UseCase`](https://github.com/aantoniadis/clean-architecture-example/blob/master/usecases/src/main/kotlin/com/github/aantoniadis/delivery/usecases/core/UseCase.kt)
+[`UseCase`](https://github.com/gilokimu/Backend-Starter-Project/blob/master/usecases/src/main/kotlin/me/gilo/backend/delivery/usecases/core/UseCase.kt)
 and
-[`UseCaseExecutor`](https://github.com/aantoniadis/clean-architecture-example/blob/master/usecases/src/main/kotlin/com/github/aantoniadis/delivery/usecases/core/UseCase.kt)
+[`UseCaseExecutor`](https://github.com/gilokimu/Backend-Starter-Project/blob/master/usecases/src/main/kotlin/me/gilo/backend/delivery/usecases/core/UseCase.kt)
 are also defined. The `UseCase` is an interface similar to the
 `java.util.Function`. It just gets a request and returns a response.
 
@@ -44,7 +44,7 @@ There are 3 more overloaded versions of the `invoke` method, which omit the inpu
 and/or the output of the `UseCaseExecutor`.
 
 Currently, the `UseCaseExecutor` implementation
-([`UseCaseExecutorImp`](https://github.com/aantoniadis/clean-architecture-example/blob/master/usecases/src/main/kotlin/com/github/aantoniadis/delivery/usecases/core/UseCase.kt))
+([`UseCaseExecutorImp`](https://github.com/gilokimu/Backend-Starter-Project/blob/master/usecases/src/main/kotlin/me/gilo/backend/delivery/usecases/core/UseCase.kt))
 is using `java.util.concurrent.CompletableFuture` and
 `java.util.concurrent.CompletionStage` for the execution abstraction. These
 abstractions are convenient as they can perform asynchronous executions and also
@@ -60,10 +60,10 @@ module.
 
 These repositories, use the Spring Data `JpaRepository` as dependencies.
 For more, check
-[JpaProductRepository.kt](https://github.com/aantoniadis/clean-architecture-example/blob/master/dataproviders/src/main/kotlin/com/github/aantoniadis/dataproviders/db/jpa/repositories/JpaProductRepository.kt).
+[JpaProductRepository.kt](https://github.com/gilokimu/Backend-Starter-Project/blob/master/dataproviders/src/main/kotlin/me/gilo/backend/dataproviders/db/jpa/repositories/JpaProductRepository.kt).
 The entities in this module, are JPA entities, so mappings to and from these and
 the domain entities are needed. Check
-[ProductEntity.kt](https://github.com/aantoniadis/clean-architecture-example/blob/master/dataproviders/src/main/kotlin/com/github/aantoniadis/dataproviders/db/jpa/entities/ProductEntity.kt)
+[ProductEntity.kt](https://github.com/gilokimu/Backend-Starter-Project/blob/master/core/src/main/kotlin/me/gilo/backend/core/entities/Product.kt)
 for more.
 
 ## `delivery` module
@@ -77,8 +77,8 @@ entities.
 A rest controller gets the RequestDto, and forwards it to the related
 use case through the `UseCaseExecutor`. The response of the use case (which is a ResponseDto) is the response of the
 controller's method that implements the endpoint. An example of such usage is
-[ProductResourceImp.kt](https://github.com/aantoniadis/clean-architecture-example/blob/master/delivery/src/main/kotlin/com/github/aantoniadis/delivery/rest/imp/ProductResourceImp.kt).
+[ProductResourceImp.kt](https://github.com/gilokimu/Backend-Starter-Project/blob/master/delivery/src/main/kotlin/me/gilo/backend/delivery/rest/imp/ProductResourceImp.kt).
 The exceptions are handled by
-[GlobalExceptionHandler.kt](https://github.com/aantoniadis/clean-architecture-example/blob/master/delivery/src/main/kotlin/com/github/aantoniadis/delivery/rest/imp/GlobalExceptionHandler.kt),
+[GlobalExceptionHandler.kt](https://github.com/gilokimu/Backend-Starter-Project/blob/master/delivery/src/main/kotlin/me/gilo/backend/delivery/rest/imp/GlobalExceptionHandler.kt),
 and they are converted to
-[ErrorDto](https://github.com/aantoniadis/clean-architecture-example/blob/master/delivery/src/main/kotlin/com/github/aantoniadis/delivery/rest/api/ErrorDto.kt).
+[ErrorDto](https://github.com/gilokimu/Backend-Starter-Project/blob/master/delivery/src/main/kotlin/me/gilo/backend/delivery/rest/api/ErrorDto.kt).
