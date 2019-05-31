@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gilokimu/android-backend-starter.svg?branch=master)](https://travis-ci.org/gilokimu/android-backend-starter)
+[![Build Status](https://travis-ci.org/gilokimu/Backend-Starter-Project.svg?branch=master)](https://travis-ci.org/gilokimu/Backend-Starter-Project)
 
 # Compile and run the app
 
