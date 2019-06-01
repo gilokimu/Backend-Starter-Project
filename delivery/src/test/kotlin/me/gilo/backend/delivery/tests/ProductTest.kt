@@ -71,7 +71,7 @@ class ProductTest {
 
         val responseDto = createResponse.body!!
         assertEquals(HttpStatus.BAD_REQUEST, createResponse.statusCode)
-        assertEquals("Produce price should not be negative", responseDto.message)
+        assertEquals("Product price should not be negative", responseDto.message)
     }
 
     private inline fun <reified T> retrieveProduct(productCode: String): ResponseEntity<T> {
@@ -84,7 +84,7 @@ class ProductTest {
         description: String
     ): ResponseEntity<T> {
         val entity = HttpEntity(ProductDto(code = productCode, price = price, description = description))
-        return restTemplate.exchange("/products/", HttpMethod.POST, entity, T::class.java)
+        return restTemplate.exchange("/products/create/", HttpMethod.POST, entity, T::class.java)
     }
 
 }

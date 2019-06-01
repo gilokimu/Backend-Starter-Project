@@ -10,7 +10,7 @@ import java.time.LocalDateTime
 class CreateProductUseCase(private val productRepository: ProductRepository) : UseCase<Product, Unit> {
     override fun execute(product: Product) {
         if (product.price < BigDecimal.ZERO)
-            throw ValidationException("Produce price should not be negative")
+            throw ValidationException("Product price should not be negative")
         productRepository.save(product.copy(createdAt = LocalDateTime.now()))
     }
 
