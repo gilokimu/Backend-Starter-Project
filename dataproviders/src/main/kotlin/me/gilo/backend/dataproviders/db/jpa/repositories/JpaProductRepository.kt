@@ -11,6 +11,17 @@ import javax.transaction.Transactional
 
 open class JpaProductRepository(private val dbProductRepository: DBProductRepository) :
     ProductRepository {
+
+    @Transactional
+    override fun update(code: ProductCode, product: Product): Product? {
+        dbProductRepository.save(product.toProductEntity())
+        return getByProductCode(code)
+    }
+
+    override fun delete(code: ProductCode) {
+        dbProductRepository.delete(getByProductCode(code)!!.toProductEntity())
+    }
+
     override fun existsProductCode(productCode: ProductCode) = dbProductRepository.existsById(productCode.value)
 
     override fun getByProductCode(productCode: ProductCode) =

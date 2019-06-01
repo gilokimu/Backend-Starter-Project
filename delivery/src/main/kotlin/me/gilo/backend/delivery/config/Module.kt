@@ -6,9 +6,7 @@ import me.gilo.backend.delivery.rest.imp.ProductResourceImp
 import me.gilo.backend.delivery.usecases.core.UseCaseExecutor
 import me.gilo.backend.delivery.usecases.core.UseCaseExecutorImp
 import me.gilo.backend.delivery.usecases.core.gateways.ProductRepository
-import me.gilo.backend.delivery.usecases.core.product.CreateProductUseCase
-import me.gilo.backend.delivery.usecases.core.product.GetProductByIdUseCase
-import me.gilo.backend.delivery.usecases.core.product.GetProductsUseCase
+import me.gilo.backend.delivery.usecases.core.product.*
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -16,11 +14,20 @@ import org.springframework.context.annotation.Configuration
 class Module {
     @Bean
     fun productsResourceImp(
-        useCaseExecutor: UseCaseExecutor,
-        getProductByIdUseCase: GetProductByIdUseCase,
-        createProductUseCase: CreateProductUseCase,
-        getProductsUseCase: GetProductsUseCase
-    ) = ProductResourceImp(useCaseExecutor, getProductByIdUseCase, createProductUseCase, getProductsUseCase)
+            useCaseExecutor: UseCaseExecutor,
+            getProductByIdUseCase: GetProductByIdUseCase,
+            createProductUseCase: CreateProductUseCase,
+            getProductsUseCase: GetProductsUseCase,
+            updateProductUseCase: UpdateProductUseCase,
+            deleteProductUseCase: DeleteProductUseCase
+    ) = ProductResourceImp(
+            useCaseExecutor,
+            getProductByIdUseCase,
+            createProductUseCase,
+            getProductsUseCase,
+            updateProductUseCase,
+            deleteProductUseCase
+    )
 
     @Bean
     fun useCaseExecutor() = UseCaseExecutorImp()
@@ -30,6 +37,12 @@ class Module {
 
     @Bean
     fun createProductUseCase(productRepository: ProductRepository) = CreateProductUseCase(productRepository)
+
+    @Bean
+    fun updateProductsUseCase(productRepository: ProductRepository) = UpdateProductUseCase(productRepository)
+
+    @Bean
+    fun deleteProductUseCase(productRepository: ProductRepository) = DeleteProductUseCase(productRepository)
 
     @Bean
     fun getProductsUseCase(productRepository: ProductRepository) = GetProductsUseCase(productRepository)

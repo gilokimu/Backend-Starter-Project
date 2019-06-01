@@ -7,10 +7,10 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 data class ProductDto(
-    val code: String,
-    val description: String,
-    val price: String,
-    val createdAt: String? = null
+        var code: String,
+        val description: String,
+        val price: String,
+        val createdAt: String? = null
 )
 
 // Mappers

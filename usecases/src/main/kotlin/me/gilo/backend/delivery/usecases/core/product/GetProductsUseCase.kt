@@ -11,7 +11,7 @@ class GetProductsUseCase(private val productRepository: ProductRepository) :
     override fun execute(request: Unit) =
         productRepository.getProducts() ?: throw EmptyException("No products for code")
 
-    interface GetProductsRepository {
+    interface ProductRepository {
         fun getProducts(): List<Product>?
     }
 }

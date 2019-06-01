@@ -11,3 +11,5 @@ data class Product(
 )
 
 data class ProductCode(val value: String)
+
+data class ProductData(val code: ProductCode, val product: Product)

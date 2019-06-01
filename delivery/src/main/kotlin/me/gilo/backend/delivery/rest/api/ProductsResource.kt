@@ -16,4 +16,12 @@ interface ProductsResource {
 
     @PostMapping("/create")
     fun createProduct(@Valid @RequestBody productDto: ProductDto): CompletionStage<ResponseEntity<Unit>>
+
+    @PutMapping("/{code}")
+    fun updateProduct(
+            @PathVariable("code") code: String,
+            @Valid @RequestBody productDto: ProductDto): CompletionStage<ProductDto>
+
+    @DeleteMapping("/{code}")
+    fun deleteProduct(@PathVariable("code") code: String): CompletionStage<ResponseEntity<Unit>>
 }
