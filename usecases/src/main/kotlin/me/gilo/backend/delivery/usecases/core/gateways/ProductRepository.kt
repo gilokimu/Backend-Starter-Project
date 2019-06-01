@@ -2,5 +2,6 @@ package me.gilo.backend.delivery.usecases.core.gateways
 
 import me.gilo.backend.delivery.usecases.core.product.CreateProductUseCase
 import me.gilo.backend.delivery.usecases.core.product.GetProductByIdUseCase
+import me.gilo.backend.delivery.usecases.core.product.GetProductsUseCase
 
-interface ProductRepository : GetProductByIdUseCase.ProductRepository, CreateProductUseCase.ProductRepository
+interface ProductRepository : GetProductByIdUseCase.ProductRepository, CreateProductUseCase.ProductRepository, GetProductsUseCase.GetProductsRepository

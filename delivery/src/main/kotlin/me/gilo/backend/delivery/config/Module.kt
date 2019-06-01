@@ -8,6 +8,7 @@ import me.gilo.backend.delivery.usecases.core.UseCaseExecutorImp
 import me.gilo.backend.delivery.usecases.core.gateways.ProductRepository
 import me.gilo.backend.delivery.usecases.core.product.CreateProductUseCase
 import me.gilo.backend.delivery.usecases.core.product.GetProductByIdUseCase
+import me.gilo.backend.delivery.usecases.core.product.GetProductsUseCase
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
@@ -17,8 +18,9 @@ class Module {
     fun productsResourceImp(
         useCaseExecutor: UseCaseExecutor,
         getProductByIdUseCase: GetProductByIdUseCase,
-        createProductUseCase: CreateProductUseCase
-    ) = ProductResourceImp(useCaseExecutor, getProductByIdUseCase, createProductUseCase)
+        createProductUseCase: CreateProductUseCase,
+        getProductsUseCase: GetProductsUseCase
+    ) = ProductResourceImp(useCaseExecutor, getProductByIdUseCase, createProductUseCase, getProductsUseCase)
 
     @Bean
     fun useCaseExecutor() = UseCaseExecutorImp()
@@ -28,6 +30,9 @@ class Module {
 
     @Bean
     fun createProductUseCase(productRepository: ProductRepository) = CreateProductUseCase(productRepository)
+
+    @Bean
+    fun getProductsUseCase(productRepository: ProductRepository) = GetProductsUseCase(productRepository)
 
     @Bean
     fun productRepository(dbProductRepository: DBProductRepository) = JpaProductRepository(dbProductRepository)

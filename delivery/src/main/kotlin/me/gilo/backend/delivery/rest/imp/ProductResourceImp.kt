@@ -8,6 +8,7 @@ import me.gilo.backend.delivery.rest.api.toProductDto
 import me.gilo.backend.delivery.usecases.core.UseCaseExecutor
 import me.gilo.backend.delivery.usecases.core.product.CreateProductUseCase
 import me.gilo.backend.delivery.usecases.core.product.GetProductByIdUseCase
+import me.gilo.backend.delivery.usecases.core.product.GetProductsUseCase
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PathVariable
@@ -16,7 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody
 class ProductResourceImp(
     private val useCaseExecutor: UseCaseExecutor,
     private val getProductByIdUseCase: GetProductByIdUseCase,
-    private val createProductUseCase: CreateProductUseCase
+    private val createProductUseCase: CreateProductUseCase,
+    private val getProductsUseCase: GetProductsUseCase
 ) : ProductsResource {
 
     override fun getProductByCode(@PathVariable("code") code: String) =
@@ -31,6 +33,13 @@ class ProductResourceImp(
             useCase = createProductUseCase,
             requestDto = productDto,
             requestConverter = { it.toProduct() },
-            responseConverter = { _ -> ResponseEntity<Unit>(HttpStatus.CREATED) })
+            responseConverter = { ResponseEntity<Unit>(HttpStatus.CREATED) })
+
+    override fun getProducts() =
+            useCaseExecutor(
+                    useCase = getProductsUseCase,
+                    requestDto = null,
+                    requestConverter = {  },
+                    responseConverter = { productList -> productList.map { product -> product.toProductDto() } })
 
 }
