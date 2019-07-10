@@ -1,3 +1,5 @@
+Blog post on this : https://gilo.me/2019/07/10/clean-architecture-approach-for-backends-with-kotlin/?preview=true
+
 [![Build Status](https://travis-ci.org/gilokimu/Backend-Starter-Project.svg?branch=master)](https://travis-ci.org/gilokimu/Backend-Starter-Project)
 
 # Compile and run the app
